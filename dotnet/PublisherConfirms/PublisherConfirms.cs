@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Text;
 using RabbitMQ.Client;
 
-const int MESSAGE_COUNT = 50_000;
+const int MESSAGE_COUNT = 100;
 
 PublishMessagesIndividually();
 PublishMessagesInBatch();
@@ -11,7 +11,9 @@ await HandlePublishConfirmsAsynchronously();
 
 static IConnection CreateConnection()
 {
-    var factory = new ConnectionFactory { HostName = "localhost" };
+    var factory = new ConnectionFactory { 
+        Uri = new Uri("amqps://ovzrrekn:mIg6vY9ktyaCJcz9_KTnRYuPn1bIWUFL@shark.rmq.cloudamqp.com/ovzrrekn")
+     };
     return factory.CreateConnection();
 }
 

@@ -9,7 +9,7 @@ if (args.length == 0) {
     process.exit(1);
 }
 
-amqp.connect('amqp://localhost', function(error0, connection) {
+amqp.connect('amqps://ovzrrekn:mIg6vY9ktyaCJcz9_KTnRYuPn1bIWUFL@shark.rmq.cloudamqp.com/ovzrrekn', function(error0, connection) {
     if (error0) {
         throw error0;
     }

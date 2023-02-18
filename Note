@@ -1,0 +1,19 @@
+1. Toàn bộ các kiểu RabbitMQ và các ngôn ngữ hỗ trợ
+https://www.rabbitmq.com/getstarted.html
+2. Các cơ chế:
+- Hello Work: Chỉ một kết nối cái nào kết nối trước sẽ được xử lý
+- Worker: Các task được đẩy vào hàng đợi xử lý nếu có 2 worker kết nối thì sẽ gửi lần lượt cho 2 worker xử lý, 
+tương tự có N cái thì gửi N xử lý. Chú ý các worker phải kết nối chung tên hàng đợi
+- Pub/Sub dùng fanout: Pub sẽ có một exchange riêng biệt, kết hợp type "fanout" để gửi đến tất cả các sub đang kết nối đến exchange này.
+Chú ý các sub kết nối đến exchange sẽ sinh ra một tên hàng đợi khác nhau
+- Pub/Sub dùng router direct: Tương tư như fanout nhưng khác ở chỗ các sub khi kết nối chỉ lắng nghe một bind key(noti, mail...). 
+Khi đó pub sẽ gửi đi, exchange sẽ xem bind key là gì và chỉ gửi đến sub lắng nghe bind key đó
+- Pub/Sub dùng router toptic: tương tự như direct nhưng có bộ lộc nội dung gửi đi trước khi qua các sub
+- RPC: client gửi thông tin cần server tính toàn, tính toán xong thì server trả về lại cho client. Mỗi lần tạo 1 name queue khác nhau
+- Publish Messages: cho phép gửi nhiều message và chờ confirm trả lời. Chức năng chỉ có trong c# không có trong nodejs. Gồm: 
++ PublishMessagesIndividually: Chậm nhất
++ PublishMessagesInBatch: Nhanh nhất
++ HandlePublishConfirmsAsynchronously: Trung bình
+
+
+
